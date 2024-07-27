@@ -22,6 +22,12 @@ public class Park extends BaseEntity {
     @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
+    private double latitude;
+
+    @Column(nullable = false)
+    private double longitude;
+
     @OneToMany(mappedBy = "name")
     @ToString.Exclude
     private List<Position> positions = new ArrayList<>();
