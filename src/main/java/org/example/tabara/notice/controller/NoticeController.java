@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.tabara.notice.domain.Notice;
 import org.example.tabara.notice.dto.NoticeDto;
 import org.example.tabara.notice.repository.NoticeRepository;
-import org.example.tabara.notice.service.NoticeDtoService;
 import org.example.tabara.notice.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ public class NoticeController {
 
     @GetMapping("/notice")
     public List<NoticeDto> getUserDto() {
-        List<NoticeDto> noti = noticeService.finAll();
+        List<NoticeDto> noti = noticeService.findAll();
         return noti;
     }
 
