@@ -6,6 +6,7 @@ import org.example.tabara.notice.dto.NoticeDto;
 import org.example.tabara.notice.repository.NoticeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,11 +14,26 @@ import java.util.List;
 public class NoticeService {
     private final NoticeRepository noticeRepository;
 
-    public List<Notice> finAll() {
-        List<Notice> notice = noticeRepository.findAll();
-        return notice;
-    }
 
+    public List<NoticeDto> finAll() {
+        List<Notice> notice = noticeRepository.findAll();
+
+
+        List<NoticeDto> result = new ArrayList<>();
+
+        for(int i=0; i<notice.size(); i++) {
+
+            result.add(NoticeDto.builder()
+                    .title(notice.get(i).getTitle())
+                    .content(notice.get(i).getContent())
+                    .build()
+            );
+        }
+
+//        new NoticeDto(title, content)
+
+        return result;
+    }
 
 
 }
