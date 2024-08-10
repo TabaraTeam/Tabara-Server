@@ -15,7 +15,7 @@ public class NoticeService {
     private final NoticeRepository noticeRepository;
 
 
-    public List<NoticeDto> finAll() {
+    public List<NoticeDto> findAll() {
         List<Notice> notice = noticeRepository.findAll();
 
 
@@ -29,9 +29,6 @@ public class NoticeService {
                     .build()
             );
         }
-
-//        new NoticeDto(title, content)
-
         return result;
     }
 
