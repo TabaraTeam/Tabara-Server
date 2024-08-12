@@ -3,8 +3,10 @@ package org.example.tabara.notice.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.tabara.common.BaseEntity;
+import org.example.tabara.notice.dto.NoticeDto;
 import org.example.tabara.user.domain.User;
 
+@Builder
 @Entity
 @Getter
 @ToString
@@ -19,10 +21,12 @@ public class Notice extends BaseEntity {
     private String content;
 
 
-    @JoinColumn(nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-
+    public static Notice toEntity(String title, String content) {
+        return Notice.builder()
+                .title(title)
+                .content(content)
+                .build();
+    }
 
 
 }
