@@ -6,7 +6,6 @@ import org.example.tabara.park.domain.Park;
 
 @Getter
 @Builder
-//@AllArgsConstructors
 public class ParkResponse {
 
     private String name;
