@@ -11,6 +11,5 @@ public interface ParkRepository extends JpaRepository<Park, Double> {
 
     // select * from park where name = :parkName
     Optional<Park> findByName(String parkName);
-
-    List<Park> findAll();
+    
 }
