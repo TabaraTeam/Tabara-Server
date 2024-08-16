@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <style>
+        .wrap{
+            display: flex;
+            min-height: 720px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .nav{
+            display: flex;
+            min-height: 100px;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 120px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="wrap">
+
+
+    <div class="nav">
+
+        <a href = "/position">위치값 전송하기</a> | <a href = "/position/list">위치 좌표 목록</a>
+
+    </div>
+
+    <form th:action="@{/position}" method="post">
+
+        <select id = "park" name = "park">
+            <option name = "park">삼락생태공원</option>
+            <option name = "park">대저생태공원</option>
+            <option name = "park">맥도생태공원</option>
+            <option name = "park">을숙도생태공원</option>
+            <option name = "park">화명생태공원</option>
+        </select>
+
+        <input  class="place" type ="text" name ="name" placeholder="장소를 입력하세요"/>
+
+        <input type="text" class="latitude" id="latitude" name = "latitude" readonly/>
+        <input type="text" class="longitude" id="longitude" name = "longitude" readonly/>
+
+
+        <button type = "submit" onclick=" nullOfPlaceCheckAndSubmitSuccessAlert(); parseDouble();">위치값 전송하기</button>
+
+    </form>
+
+</div>
+
+<script type = "text/javascript">
+    let latitude = 0;
+    let longitude = 0;
+
+    // 위치 표시
+    function logPosition(latitude, longitude){
+        const latitudeTag = document.querySelector(".latitude");
+        const longitudeTag = document.querySelector(".longitude")
+
+        latitudeTag.innerHTML = latitude;
+        latitudeTag.value = latitude;
+        longitudeTag.innerHTML = longitude;
+        longitudeTag.value = longitude;
+    }
+
+    function parseDouble(){
+        let latitude = parseDouble(form.querySelector(".latitude").value);
+        let longitude = parseDouble(form.querySelector(".longitude").value);
+
+        form.submit();
+    }
+
+
+    function nullOfPlaceCheckAndSubmitSuccessAlert(){
+
+        const place = document.querySelector(".place").value;
+        if(place == null || place == ""){
+            alert("장소를 입력해주세요.");
+        }else{
+            alert("전송완료하였습니다.");
+        }
+
+    }
+
+    // 내 위치
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            console.log('Latitude:', latitude);
+            console.log('Longitude:', longitude);
+
+            logPosition(latitude, longitude);
+
+        },
+        function (error) {
+            console.error('Error Code = ' + error.code + ' - ' + error.message);
+        }
+    );
+
+</script>
+
+</body>
+
+
+
+</html>
