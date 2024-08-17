@@ -8,6 +8,8 @@ import org.example.tabara.park.repository.ParkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 
 @Transactional
 @Service
@@ -39,5 +41,11 @@ public class ParkService {
 
     }
 
+
+    public Park findByName(String name){
+        // Optional<Park> -> Park
+        return parkRepository.findByName(name)
+                .orElseThrow(() -> new NoSuchElementException("해당 공원이 존재하지 않습니다."));
+    }
 
 }
