@@ -14,6 +14,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class Park extends BaseEntity {
 
     @Column(nullable = false)
