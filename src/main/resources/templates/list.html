@@ -1,0 +1,87 @@
+<html>
+<head>
+    <style>
+        .wrap{
+            display: flex;
+            min-height: 720px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .nav{
+
+            display: flex;
+            min-height: 100px;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 120px;
+        }
+
+        table{
+            min-width: 20svw;
+            min-height: 10svh;
+            border: 0.5px solid #dddddd;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <div class="nav">
+
+        <a href = "/position">위치값 전송하기</a> | <a href = "/position/list">위치 좌표 목록</a>
+
+    </div>
+
+    <table>
+        <thead>
+
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+            <th>
+                번호
+            </th>
+            <th>
+                공원이름
+            </th>
+            <th>
+                대상
+            </th>
+
+            <th>
+                위도
+            </th>
+            <th>
+                경도
+            </th>
+        </tr>
+
+        <tr th:each="get : ${list}">
+            <td th:text="${get.getId()}"></td>
+            <td th:text="${get.getPark().getName()}"></td>
+            <td th:text="${get.getName()}"></td>
+            <td th:text="${get.getLatitude()}"></td>
+            <td th:text="${get.getLongitude()}"></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+</body>
+
+
+</html>
