@@ -67,7 +67,7 @@
 
         <tr th:each="get : ${list}">
             <td th:text="${get.getId()}"></td>
-            <td th:text="${get.getPark()}"></td>
+            <td th:text="${get.getPark().getName()}"></td>
             <td th:text="${get.getName()}"></td>
             <td th:text="${get.getLatitude()}"></td>
             <td th:text="${get.getLongitude()}"></td>
