@@ -9,6 +9,7 @@ import org.example.tabara.common.BaseEntity;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class Position extends BaseEntity {
 
 
